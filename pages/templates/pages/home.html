@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Home | Inventory Management System{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h1>Inventory Management System</h1>
+    <p>Track products, monitor stock levels, and manage your inventory efficiently.</p>
+    <a href="{% url 'add_item' %}" class="btn">Add New Item</a>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact | Inventory Management System{% endblock %}
+
+{% block content %}
+<div class="page-card">
+    <h1>Contact Us</h1>
+
+    {% if success %}
+    <div class="alert-box success">
+         Message sent successfully! We'll get back to you soon.
+    </div>
+    {% endif %}
+
+    <!-- Contact Info Section -->
+    <div class="contact-info-box">
+        <h3>Get In Touch</h3>
+        <p><strong>Gmail:</strong> inventoryco@gmail.com</p>
+        <p><strong>Contact No.:</strong> 09287838964</p>
+    </div>
+
+    <form method="post" class="form-styled">
+        {% csrf_token %}
+        
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" required>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit" class="btn">Send Message</button>
+    </form>
+</div>
+{% endblock %}

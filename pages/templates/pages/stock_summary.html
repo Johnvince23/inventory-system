@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Stock Summary | Inventory Management System{% endblock %}
+
+{% block content %}
+<div class="page-card">
+    <h1> Stock Summary</h1>
+    
+    <div class="stats-grid">
+        <div class="stat-card">
+            <h3>Total Items</h3>
+            <p class="stat-number">{{ total_items }}</p>
+        </div>
+        <div class="stat-card">
+            <h3>Total Quantity</h3>
+            <p class="stat-number">{{ total_quantity }}</p>
+        </div>
+        <div class="stat-card">
+            <h3>Total Value</h3>
+            <p class="stat-number">₱{{ total_value|floatformat:2 }}</p>
+        </div>
+    </div>
+
+    {% if low_stock %}
+    <div class="low-stock-box">
+        <h3> Low Stock Items (≤ 5)</h3>
+        <ul>
+            {% for item in low_stock %}
+            <li><strong>{{ item.name }}</strong> — Only {{ item.quantity }} left</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

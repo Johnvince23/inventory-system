@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Inventory List | Inventory Management System{% endblock %}
+
+{% block content %}
+<div class="page-card">
+    <h1>Inventory List</h1>
+    
+    {% if items %}
+    <div class="table-wrapper">
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Quantity</th>
+                    <th>Unit Price</th>
+                    <th>Total Value</th>
+                    <th>Action</th> 
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.category }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>₱{{ item.unit_price|floatformat:2 }}</td>
+                    <td>₱{{ item.total_value|floatformat:2 }}</td>
+                    <td>
+                        <a href="{% url 'delete_item' item.id %}" class="delete-btn" onclick="return confirm('Delete this item?')">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <p class="empty-msg">No items in inventory yet. <a href="{% url 'add_item' %}">Add your first item →</a></p>
+    {% endif %}
+</div>
+{% endblock %}

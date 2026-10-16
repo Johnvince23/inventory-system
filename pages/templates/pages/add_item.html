@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Item | Inventory Management System{% endblock %}
+
+{% block content %}
+<div class="page-card">
+    <h1>Add New Item</h1>
+    <form method="post" class="form-styled">
+        {% csrf_token %}
+        
+        <label for="name">Item Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="category">Category:</label>
+        <input type="text" id="category" name="category" required>
+
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" min="0" required>
+
+        <label for="unit_price">Unit Price (₱):</label>
+        <input type="number" step="0.01" id="unit_price" name="unit_price" min="0" required>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="4"></textarea>
+
+        <button type="submit" class="btn">Save Item</button>
+    </form>
+</div>
+{% endblock %}
